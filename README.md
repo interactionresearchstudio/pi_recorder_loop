@@ -1,6 +1,5 @@
-# PI Recorder Chop (working title) 
+# PI Recorder Loop (working title) 
 
-Intended to allow users to take audio recordings of an area of interest, without compromising privacy of the recordees or the fidelity of recordings.
+Intended to allow users to create audio collages of their surroundings.
 
-The application takes sound recordings, then reorders 'chunks' of samples into a random sequence so the nature of conversations are kept private, whilst keeping the high fidelity of recording.
-
+The application takes sound recordings when a button is held. These sounds are added to a looping audio collage, allowing the user to add sounds to create an overall image. The file is then saved as one WAV file when the program is closed
