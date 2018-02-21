@@ -58,7 +58,6 @@ public:
 #ifdef      PI_VERSION
     GPIO gpio18;
     GPIO gpio17;
-    bool state_button
 #endif
 };
 

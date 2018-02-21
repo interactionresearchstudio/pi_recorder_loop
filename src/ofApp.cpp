@@ -1,13 +1,6 @@
-/* This is an example of how to integrate maximilain into openFrameworks,
- including using audio received for input and audio requested for output.
- 
- 
- You can copy and paste this and use it as a starting example.
- 
- */
+
 
 #include "ofApp.h"
-//#include "maximilian.h"/* include the lib */
 #include "time.h"
 
 
@@ -46,9 +39,13 @@ void ofApp::setup(){
     loopCount = 0;
     
     soundstream.printDeviceList();
-    soundstream.setDeviceID(4);
-    
+    #ifdef PI_VERSION
+    soundstream.setDeviceID(2);
+    soundstream.setup(this, 2, 1, sampleRate, bufferSize, 4);
+    #else
+    soundstream.setDeviceID(1);
     soundstream.setup(this, 2, 2, sampleRate, bufferSize, 4);
+    #endif
     
     setupRecording();
 
@@ -59,13 +56,16 @@ void ofApp::setup(){
 void ofApp::update(){
     
 #ifdef      PI_VERSION
-    gpio17.getval_gpio(recButton);
+    playBack = true;
+    string state_but;
+    gpio17.getval_gpio(state_but);
     
-    recButton  =  !recButton;
-    if(recButton){
-        setupRecording();
+    if(state_but == "1"){
+        gpio18.setval_gpio("1");
+        recordingOn = true;
     } else {
-        processSoundVec();
+        gpio18.setval_gpio("0");
+        recordingOn = false;
     }
 
     
