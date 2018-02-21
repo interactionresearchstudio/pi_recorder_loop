@@ -43,7 +43,7 @@ void ofApp::setup(){
     soundstream.setDeviceID(2);
     soundstream.setup(this, 2, 1, sampleRate, bufferSize, 4);
     #else
-    soundstream.setDeviceID(1);
+    soundstream.setDeviceID(4);
     soundstream.setup(this, 2, 2, sampleRate, bufferSize, 4);
     #endif
     
